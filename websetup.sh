@@ -22,7 +22,7 @@ echo "#########################################################"
 echo
 echo "Copying the website data on Apache doc root dir"
 cd /tmp && wget -O website.zip $WEBURL
-cd /tmp && unzip -o website.zip
+cd /tmp && unzip  -o website.zip
 cp -r /tmp/2092_shelf/* /var/www/html
 echo
 echo "Restarting HTTPD"
