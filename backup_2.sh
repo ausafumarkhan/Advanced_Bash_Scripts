@@ -10,12 +10,21 @@
 # Usage
 # ./backup_script 
 
-echo "**********************************"
-echo "********Creating a backup*********"
+echo "Hello ${USER^}"
 
-sudo tar -cf ~/bash_course/backup/my_backup_"$(date +%d-%m-%Y_%H-%M-%S)".tar ~/* 3>/dev/null
+echo "I will now back up your home directory $HOME"
+echo
+echo "**********************************"
+echo
+currentdir=$(pwd)
+echo "You are running this script from $currentdir"
+echo "Therefore, I will save the backup in $currentdir"
+echo
+echo "********Creating a backup*********"
+echo
+
+sudo tar -cf $currentdir/mybackup_"$(date +%d-%m-%Y_%H-%M-%S)".tar $HOME 3>/dev/null
 
 echo "*********************************"
-echo "*********End of script***********"
-
+echo "********* Backup Completed Successfully. ***********"
 exit 0
