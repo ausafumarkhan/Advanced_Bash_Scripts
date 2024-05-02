@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# Author: "Ausaf Umar Khan"
+# Date Created : 2024-05-02
+# Last Modified : 2024-05-02
+
+# Description :
+#
+
+# Usage
+# ./city_check.sh
+
+PS3="Please select from the above cities: "
+select city in Tokyo London "Los Angeles" Moscow Dubai Manchester "New York" Paris Bangalore Johannesburg Istanbul Milan "Abu Dhabi" Pune Nairobi Berlin Karachi; 
+do
+
+case $city in 
+	Tokyo) 
+		country="Japan" ;;
+	London|Manchester) 
+		country="England" ;;
+	"Los Angeles"|"New York") 
+		country="USA" ;;
+	Moscow) 
+		country="Russia" ;;
+	Paris) 
+		country="France" ;;
+	Bangalore|Pune)
+		country="India" ;;
+	Johannesburg)
+		country="South Africa" ;;
+	Istanbul)
+		country="Turkey" ;;
+	Milan)
+		country="Italy" ;;
+	Dubai|"Abu Dhabi")
+		country="UAE" ;;
+	Nairobi)
+		country="Kenya" ;;
+	Berlin)
+		country="Germany" ;;
+	Karachi)
+		country="Paksitan" ;;
+	*) echo "Not in the list" ;;
+esac
+echo "$city is in $country"
+break
+done
