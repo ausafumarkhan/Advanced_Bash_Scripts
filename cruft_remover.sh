@@ -5,7 +5,8 @@
 # Last Modified : 2024-05-07
 
 # Description :
-# Script will  delete files that haven’t been modified for a certain period of time.
+# Script will delete files that haven’t been modified for a certain period of time
+
 # Usage
 # ./cruft_remover.sh 
 

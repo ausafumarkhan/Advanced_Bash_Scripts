@@ -11,7 +11,7 @@
 # ./folder_organiser.sh 
 
 
-read -r -p "Enter the directory path: " dir
+read -r -p "Enter the absolute path of a directory which you want to organise: " dir
 
 while read -r line; do
 
@@ -64,7 +64,7 @@ case "$dir/$line" in
 		else
 			mkdir "$dir/video"; mv "$dir/$line" "$dir/video"
                 fi ;;
-	*) echo "No need to move" ;;
+	*) echo "can't move $line. It might be an unsupported extension or a directory" ;;
 esac
 done < <(ls "$dir")
 
