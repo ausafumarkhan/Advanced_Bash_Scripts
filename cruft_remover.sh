@@ -1,5 +1,13 @@
 #!/bin/bash
 
+# Author: "Ausaf Umar Khan"
+# Date Created : 2024-05-07
+# Last Modified : 2024-05-07
+
+# Description :
+# Script will  delete files that haven’t been modified for a certain period of time.
+# Usage
+# ./cruft_remover.sh 
 
 read -r -p "Enter the days of unmodified file: " num
 read -r -p "Enter the directory absolute path: " path
