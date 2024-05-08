@@ -11,61 +11,38 @@
 # ./folder_organiser.sh 
 
 
-read -r -p "Enter the absolute path of a directory which you want to organise: " dir
+read -r -p "Enter the absolute path of a folderectory which you want to organise: " folder
 
-while read -r line; do
+while read filename; do
 
-case "$dir/$line" in 
+case "$filename" in
 	*.jpg | *.jpeg | *.png)
-		if [[ -d "$dir/images" ]]; then
-			mv "$dir/$line" "$dir/images"
-		else
-			mkdir "$dir/images"; mv "$dir/$line" "$dir/images" 
-		fi ;;
+		subfolder="images" ;;
 	*.doc | *.docx | *.txt | *.pdf)
-		if [[ -d "$dir/documents" ]]; then
-                        mv "$dir/$line" "$dir/documents"
-		else
-			mkdir "$dir/documents"; mv "$dir/$line" "$dir/documents"
-                fi ;;
+		subfolder="documents" ;;
 	*.xls | *.xlsx | *.csv)
-		if [[ -d "$dir/spreadsheets" ]]; then
-                        mv "$dir/$line" "$dir/spreadsheets"
-		else
-			mkdir "$dir/spreadsheets"; mv "$dir/$line" "$dir/spreadsheets"
-                fi ;;
+		subfolder="spreadsheets" ;;
 	*.sh)
-		if [[ -d  "$dir/scripts" ]]; then
-                        mv  "$dir/$line" "$dir/scripts"
-		else
-			mkdir  "$dir/scripts"; mv "$dir/$line" "$dir/scripts"
-                fi ;;
+		subfolder="scripts" ;;
 	*.zip | *.tar | *.tar.gz | *.tar.bz2)
-		if [[ -d "$dir/archives" ]]; then
-			mv  "$dir/$line" "$dir/archives"
-		else
-                        mkdir "$dir/archives"; mv "$dir/$line" "$dir/archives"
-                fi ;;
+		subfolder="archives" ;;
 	*.ppt | *.pptx)
-		if [[ -d "$dir/presentations" ]]; then
-                        mv "$dir/$line" "$dir/presentations"
-		else
-			mkdir "$dir/presentations"; mv "$dir/$line" "$dir/presentations"
-                fi ;;
+		subfolder="presentations" ;;
 	*.mp3)
-		if [[ -d "$dir/audio" ]]; then
-                        mv "$dir/$line" "$dir/audio"
-		else
-			mkdir "$dir/audio"; mv "$dir/$line" "$dir/audio"
-                fi ;;
+		subfolder="audio" ;;
 	*.mp4)
-		if [[ -d "$dir/video" ]]; then
-                	mv "$dir/$line" "$dir/video"
-		else
-			mkdir "$dir/video"; mv "$dir/$line" "$dir/video"
-                fi ;;
-	*) echo "can't move $line. It might be an unsupported extension or a directory" ;;
+		subfolder="video" ;;
+	*)
+		subfolder="."; echo "No need to move/organise" ;;
 esac
-done < <(ls "$dir")
 
-echo "Files are organised in $dir directory"
+if [ ! -d "$folder/$subfolder" ]; then
+	mkdir "$folder/$subfolder"
+fi
+
+
+mv "$folder/$filename" "$folder/$subfolder"
+
+done < <(ls "$folder")
+
+echo "Files are organised in $folder directory"
