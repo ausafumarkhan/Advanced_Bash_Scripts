@@ -1,6 +1,15 @@
 #!/bin/bash
 
-read -p "Enter intance name: " instance
+# Author: "Ausaf Umar Khan"
+# Date Created : 2024-05-10
+# Last Modified : 2024-05-14
+
+# Description :
+# Script will ping and telnet the instance on particular port
+# Usage
+# ./server_reach.sh
+
+read -p "Enter FQDN of an instance or url: " instance
 read -p "Enter the port: " port
 ping -c 3 "$instance"
 
