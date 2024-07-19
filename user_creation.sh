@@ -21,3 +21,4 @@ echo ${password} | passwd --stdin ${username}
 
 # Force password change on first login 
 passwd -e ${username}
+
